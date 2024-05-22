@@ -1,0 +1,69 @@
+---
+
+---
+
+<button
+	id='themeToggle'
+	class='themeToggle'
+>
+
+</button>
+
+<!-- MUY IMPORTANTE!!! PARA QUE ESTOS ESTILOS FUNIONEN EN LOS ESTILOS GLOBALES HAY QUE TENER UNA CLASE .light EN EL HTML que será condicional con el script que viene a continuación -->
+<style>
+	.themeToggle {
+    width: 2rem;
+    height: 2rem;
+    background: orange;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+	}
+	:global(.light) .themeToggle {
+    background-color: black;
+	}
+</style>
+
+<!-- //TODO ESTE SCRIPT ES PARA CONTROLAR EL TEMA DE COLOR -->
+<script is:inline>
+	//No se porqué es "is:inline" pero creo que el script tiene que ir al final del codigo
+
+	//COMPROBAMOS SI HAY YA UN TEMA GUARDADO EN LOCALSTORAGE, SI NO HAY, COMPROBAMOS SI EL SISTEMA OPERATIVO TIENE EL TEMA OSCURO ACTIVADO, SI NO, PONEMOS EL TEMA CLARO
+	const theme = (() => {
+		//primero buscamos en el localstorage para que el usuario abra la web con el tema que tenía la última vez
+		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+			return localStorage.getItem('theme')
+		}
+		//si no hay nada en el localstorage, comprobamos si el sistema operativo tiene el tema oscuro activado
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			return 'dark'
+		}
+		return 'light'
+	})()
+
+	//SI EL TEMA ES OSCURO, QUITAMOS LA CLASE LIGHT DEL HTML, SI NO, LA AÑADIMOS
+	if (theme === 'dark') {
+		document.documentElement.classList.remove('light')
+	} else {
+		document.documentElement.classList.add('light')
+	}
+
+	//GUARDAMOS EL TEMA EN LOCALSTORAGE
+	window.localStorage.setItem('theme', theme)
+
+	//FUNCION PARA CAMBIAR EL TEMA
+	const handleToggleTheme = () => {
+		const element = document.documentElement
+		element.classList.toggle('light')
+
+		const isDark = element.classList.contains('light')
+		localStorage.setItem('theme', isDark ? 'light' : 'dark')
+	}
+
+	//EVENTO PARA CAMBIAR EL TEMA
+	document
+		.getElementById('themeToggle')
+		.addEventListener('click', handleToggleTheme)
+
+	// const themeToggle = document.getElementById('themeToggle')
+</script>

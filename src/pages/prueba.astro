@@ -1,0 +1,26 @@
+---
+import ToggleTheme from '../components/ToggleTheme.astro'
+---
+
+<div>
+  <ToggleTheme />
+  <h1>PAULA INGLES</h1>
+  <a href='/'>home</a>
+</div>
+
+
+<style>
+  div{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: red;
+  }
+  :global(.light) div{
+    background-color: violet;
+  }
+  a{
+    color: blue;
+  }
+  </style>
