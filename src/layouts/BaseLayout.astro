@@ -24,16 +24,20 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		--fondoOscuro: hsla(0, 11%, 11%, 1);
+		--fondoOscuro: #444;
+		--fondoClaro: hsla(60, 11%, 80%, 1);
+		--textoOscuro: red;
+		--textoClaro: #000;
 	}
 	html {
 		font-family: system-ui, sans-serif;
 	}
 	body{
 		background-color: var(--fondoOscuro);
+		color: var(--textoOscuro);
 	}
 	.light body{
-		background-color: hsla(60, 11%, 80%, 1);
+		background-color: var(--fondoClaro);
 		
 	}
 </style>

@@ -1,0 +1,93 @@
+---
+// import MenuBtn from './MenuBtn.astro'
+const MENU = [
+  {
+    "name": "Inicio",
+    "url": "/home"
+  },
+  {
+    "name": "Nosotros",
+    "url": "/about"
+  },
+  {
+    "name": "Servicios",
+    "url": "/services"
+  },
+  {
+    "name": "Contacto",
+    "url": "/contact"
+  },
+  {
+    "name": "Catálogo",
+    "url": "/catalogo"
+  }
+];
+
+// let activeButton = '';
+---
+<main class="menu-main">
+  <nav class="menu-nav">
+    <ul class="menu-ul">
+      {MENU.map((item, index) => (
+        <button class='menu-btn'>
+            <a  class='btn' href={'#'}>
+              {item.name}
+            </a>  
+          </button>      
+        ))}
+      </ul>
+    </nav>  
+  </main>   
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const btns = document.querySelectorAll('.menu-btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', (event) => {
+        btns.forEach(btn => btn.style.background = 'black');
+        event.currentTarget.style.background = 'red';
+      });
+    });
+  });
+</script>
+<style>
+  .menu-btn {
+    width: 111px;
+    height: 44px;
+    border-radius: 11%;
+  }
+</style>
+
+
+<!-- <main class="menu-main">
+  <nav class="menu-nav">
+    <ul class="menu-ul">
+      {MENU.map((item, index) => (
+        <MenuBtn id={`btn-${index}`}>
+            <a  class='btn' href={'#'}>
+              {item.name}
+            </a>  
+          </MenuBtn>      
+        ))}
+      </ul>
+    </nav>  
+  </main>   
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const btns = document.querySelectorAll('.btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', (event) => {
+        btns.forEach(btn => btn.style.background = 'black');
+        event.target.style.background = 'red';
+      });
+    });
+  });
+</script> -->
+
+
+<style>
+  .btn{
+    cursor: pointer;
+  }
+</style>
