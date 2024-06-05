@@ -1,0 +1,58 @@
+.mena {
+  display: flex;
+  flex-direction: row;
+  width: 180px;
+  align-items: center;
+  border-radius: .4rem;
+  border: solid 1px red;
+  transition: all 0.5s;
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.5s;
+  background-color: #f9f9f9;
+}
+
+:global(.light) .mena,
+david {
+  background-color: aqua;
+}
+
+
+
+.mena:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: orange;
+}
+
+.menadiv {
+  margin-top: 11px;
+  margin-bottom: 11px;
+  transition: all 0.5s;
+  position: relative;
+  transition: 0.5s;
+}
+
+.menadiv:after {
+  content: '>>';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  translate: 34px 0px;
+  right: 20px;
+  transition: 0.5s;
+
+}
+
+.menadiv:hover:after {
+  right: 0;
+  opacity: 1;
+
+}
+
+.dos {
+  filter: brightness(1);
+  background-color: red;
+}
